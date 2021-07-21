@@ -1,13 +1,40 @@
 <section class="orders-show">
-
+  <% puts @order.inspect %>
+  <% puts enhanced_cart.inspect %>
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
+    <h3>Thank you for your order!</h4>
+    <h4> Email: <%= @order.email %> </h4>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order.line_items.each do |item| %>
+          <%= render 'line_items', product: item.product, quantity: item[:quantity].to_i %>
+        <% end %>
+      </tbody>
+
+      <tfoot>
+        <tr>
+          <th colspan="3">
+            TOTAL:
+          </th>
+          <th>
+            <h5> Total: <%= @order.total %> </h5>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
-
-</section>
+	
