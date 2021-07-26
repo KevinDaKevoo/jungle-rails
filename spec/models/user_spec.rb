@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 RSpec.describe User, type: :model do
   describe 'Validations' do
     it 'should save if user fields are valid' do
