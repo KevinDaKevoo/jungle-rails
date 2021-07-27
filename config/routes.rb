@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:create, :show]
 
-  get '/about', to: 'about#show'
+  get '/about', to: 'about#index'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get '/login' => 'sessions#new'
